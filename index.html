@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Clean Steam Keys</title>
+    </head>
+    <body>
+        <h1>Clean Steam Keys</h1>
+
+        <textarea id="input" rows="50" cols="100"></textarea>
+        <br><br>
+        <button id="submit">Submit</button>
+
+        <script>
+            document.getElementById('submit').addEventListener('click', function() {
+                // get input from text field
+                var input = document.getElementById('input').value;
+
+                // regex to filter multiple steam keys from string
+                var regex = /([A-Z0-9]+-[A-Z0-9]+-[A-Z0-9]+)/g;
+
+                // array with steam keys
+                var array = input.match(regex);
+
+                var result = '';
+
+                array.forEach(function(entry) {
+                    result = result.concat(entry + "\n");
+                });
+
+                document.getElementById('input').value = result;
+            });
+        </script>
+    </body>
+</html>
